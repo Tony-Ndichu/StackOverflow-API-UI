@@ -8,7 +8,7 @@ if (typeof(regform) != 'undefined' && regform != null)
 regform.addEventListener('submit', function(event) {
 
     event.preventDefault();
-    var url = 'http://127.0.0.1:5000/api/v1/auth/signup';
+    var url = 'https://finalstack.herokuapp.com/api/v1/auth/signup';
 
 
     const fname = document.getElementById('fname').value

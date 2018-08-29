@@ -7,7 +7,7 @@ if (typeof(loginform) != 'undefined' && loginform != null)
 loginform.addEventListener('submit', function(event) {
 
     event.preventDefault();
-    var url = 'http://127.0.0.1:5000/api/v1/auth/login';
+    var url = 'https://finalstack.herokuapp.com/api/v1/auth/login';
 
     const uname = document.getElementById('uname').value
     const logpass = document.getElementById('logpass').value
