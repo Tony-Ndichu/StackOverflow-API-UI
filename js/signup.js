@@ -7,7 +7,7 @@ function makeElement(message, parentId, elementType){
     elem = document.createElement(elementType);
     elem.innerHTML = `<div class="alert"> ${message} <div/>`
     parentElem = document.getElementById(parentId)
-    parentElem.html(elem);
+    parentElem.append(elem);
 }
 
 
@@ -44,6 +44,7 @@ regform.addEventListener('submit', function(event) {
     .then((res) => {
         res.json().then((data) => {
             console.log(data),
+            document.getElementById("messaging").innerHTML = "",
             makeElement(data.message, 'messaging', 'div')
 
                 })
