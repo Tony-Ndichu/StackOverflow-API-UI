@@ -2,6 +2,15 @@
 
 var regform = document.getElementById('registration-form');
 
+
+function makeElement(message, parentId, elementType){
+    elem = document.createElement(elementType);
+    elem.innerHTML = `<div class="alert"> ${message} <div/>`
+    parentElem = document.getElementById(parentId)
+    parentElem.append(elem);
+}
+
+
 if (typeof(regform) != 'undefined' && regform != null)
 {
 
@@ -23,7 +32,7 @@ regform.addEventListener('submit', function(event) {
                 email: regmail,
                 password : regpass};
 
-    fetch(`${baseUrl}/auth/login`, {
+    fetch(`${baseUrl}/auth/signup`, {
 
   method: 'POST', // or 'PUT'
   body: JSON.stringify(data), // data can be `string` or {object}!
@@ -32,9 +41,12 @@ regform.addEventListener('submit', function(event) {
     'Content-Type': 'application/json'
   }
 })
-    .then(res => res.json())
-    .then(data => openDialog(data.message))
-    .catch(error => console.log('Error:', error));
-})
+    .then((res) => {
+        res.json().then((data) => {
+            console.log(data),
+            makeElement(data.message, 'messaging', 'div')
 
+                })
+            });
+        });
 }

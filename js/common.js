@@ -23,4 +23,4 @@ gotit.onclick = function () {
    closeDialog()
 }
 
-baseUrl = "http://localhost/wed/StackOverflow-API-UI/api/v1"
+baseUrl = 'https://finalstack.herokuapp.com/api/v1';
