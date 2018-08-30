@@ -6,7 +6,7 @@ function makeElement(message, parentId, elementType){
     elem = document.createElement(elementType);
     elem.innerHTML = `<div class="alert"> ${message} <div/>`
     parentElem = document.getElementById(parentId)
-    parentElem.innerHTML(elem);
+    parentElem.html(elem);
 }
 
 
