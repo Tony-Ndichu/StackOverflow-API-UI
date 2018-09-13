@@ -2,9 +2,16 @@
 
 var loginform = document.getElementById('login-form');
 
-function makeElement(message, parentId, elementType){
+function makeElement(message, parentId, elementType, status){
     elem = document.createElement(elementType);
-    elem.innerHTML = `<div class="alert"> ${message} <div/>`
+
+    if (status == 200){
+    elem.innerHTML = `<div class="green alert"> ${message} <div/>`
+  } else {
+    elem.innerHTML = `<div class="red alert"> ${message} <div/>`
+
+  }
+
     parentElem = document.getElementById(parentId)
     parentElem.append(elem);
 }
@@ -21,9 +28,8 @@ loginform.addEventListener('submit', function(event) {
 
     var data = {username: uname,
                 password : logpass};
-    var url = "https://finalstack.herokuapp.com/api/v1/auth/login";
 
-    fetch(url , {
+    fetch(`${baseUrl}/auth/login` , {
 
       method: 'POST', // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
@@ -35,10 +41,13 @@ loginform.addEventListener('submit', function(event) {
   })
      .then((res) => {
         res.json().then((data) => {
-            console.log(data),
             document.getElementById("messaging").innerHTML = "",
-            makeElement(data.message, 'messaging', 'div')
+            makeElement(data.message, 'messaging', 'div', res.status),
+            localStorage.setItem('thetoken', data.access_token);
 
+            if (res.status == 200){
+                window.location.href = 'home.html';
+            }
                 })
             });
         });

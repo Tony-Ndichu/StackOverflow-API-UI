@@ -1,8 +1,11 @@
+var token = localStorage.getItem('thetoken');
+
+
 window.onload = () =>{
 	getQuestions()
 }
 
-function makeElement(id, name, title, description, parentId,  elementType){
+const makeElement = (id, name, title, description, answers, parentId,  elementType) => {
     elem = document.createElement(elementType);
     elem.innerHTML = `<div class="q-box">
 
@@ -16,7 +19,7 @@ function makeElement(id, name, title, description, parentId,  elementType){
 
 					
 					<div class="specs">
-						<div class="spec-answ themecolor-text"><i class="fas fa-pencil-alt"></i> 19 answers</div>
+						<div class="spec-answ themecolor-text"><i class="fas fa-pencil-alt"></i>${answers } answers</div>
 					</div>
 
 					<button class="view themecolor-bg  view txt-wht pointer">View</button>
@@ -29,18 +32,17 @@ function makeElement(id, name, title, description, parentId,  elementType){
     parentElem.append(elem);
 }
 
-var url = "https://finalstack.herokuapp.com/api/v1/questions";
 
 const getQuestions = () => {
     console.log("Fetching questions ...")
-    fetch(url , {
+    fetch(`${baseUrl}/questions` , {
         method: "GET",
     })
     .then((res) => {
         res.json().then((data) => {
             console.log(data)
 				for (let i in data.list) {
-					makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], 'root', 'div')
+					makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'root', 'div')
 
 				}
 			});
@@ -65,46 +67,6 @@ let modalCloser = document.getElementById('close-modal')
 }
 
 
-
-//START OF USER LOGIN
-
-var questionform = document.getElementById('question-form');
-
-if (typeof(questionform) != 'undefined' && questionform != null)
-{
-questionform.addEventListener('submit', function(event) {
-
-    event.preventDefault();
-
-    const title = document.getElementById('title').value
-    const description = document.getElementById('descr').value
-
-    var data = {title : title,
-                description : description } ;
-    var url = "http://127.0.0.1:5000/api/v1/questions";
-
-    fetch(url , {
-
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      headers:{
-        "Access-Control-Allow-Origin": "*",
-        'Content-Type': 'application/json'
-      },
-
-  })
-    .then(res => res.json(res.status))
-    .then(data => {
-      if (data.message == 'Sorry, we have no user with those credentials'){
-           console(data.message);
-         }
-
-    })
-})
-}
-
-//END OF USER LOGIN
-
 let theMenuButton = document.getElementById('menu');
 
 let theCloseButton = document.getElementById('closer');
@@ -120,7 +82,7 @@ theCloseButton.onclick = () => {
 	toggleCloseButton()
 }
 
-function toggleMenuBody(){ 
+const toggleMenuBody = () =>{ 
 
 	var menuid = document.getElementById("bodyMenu")
 
@@ -136,7 +98,7 @@ menuid.classList.add('not-visible');
 }
 
 
-function toggleMenuButton(){
+const toggleMenuButton = () =>{
 	
 	var menu_button = document.getElementById("menu")
 
@@ -152,7 +114,7 @@ menu_button.classList.add('hide');
 }
 
 
-function toggleCloseButton(){
+const toggleCloseButton = () =>{
 	
 	var close_button = document.getElementById("closer")
 
@@ -165,4 +127,65 @@ close_button.classList.add('hide');
 	close_button.classList.remove('hide');
 	close_button.classList.add('show');
 }
+}
+
+
+
+//START OF USER POST QUESTION
+
+var questionform = document.getElementById('question-form');
+
+
+function makeQueResponse(message, parentId, elementType, status){
+    elem = document.createElement(elementType);
+
+    if (status == 201){
+    elem.innerHTML = `<div class="green alert"> ${message} <div/>`
+
+} else {
+    elem.innerHTML = `<div class="red alert"> ${message} <div/>`
+}
+    parentElem = document.getElementById(parentId)
+    parentElem.append(elem);
+}
+
+
+if (typeof(questionform) != 'undefined' && questionform != null)
+{
+
+questionform.addEventListener('submit', function(event) {
+
+    event.preventDefault();
+
+
+
+    const title = document.getElementById('title').value
+    const description = document.getElementById('descr').value
+
+    var data = {title: title,
+                description: description};
+
+    fetch(`${baseUrl}/questions`, {
+
+  method: 'POST', // or 'PUT'
+  body: JSON.stringify(data), // data can be `string` or {object}!
+  headers:{
+    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer '+ token
+  }
+})
+    .then((res) => {
+        res.json().then((data) => {
+            document.getElementById("que-resp").innerHTML = "",
+            makeQueResponse(data.message, 'que-resp', 'div', res.status)
+
+            if (res.status == 201){
+                console.log("Question Posted")
+            }
+
+
+                })
+            });
+        });
 }

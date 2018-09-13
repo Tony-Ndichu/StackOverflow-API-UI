@@ -3,9 +3,15 @@
 var regform = document.getElementById('registration-form');
 
 
-function makeElement(message, parentId, elementType){
+function makeElement(message, parentId, elementType, status){
     elem = document.createElement(elementType);
-    elem.innerHTML = `<div class="alert"> ${message} <div/>`
+
+    if (status == 201){
+    elem.innerHTML = `<div class="green alert"> ${message} <div/>`
+
+} else {
+    elem.innerHTML = `<div class="red alert"> ${message} <div/>`
+}
     parentElem = document.getElementById(parentId)
     parentElem.append(elem);
 }
@@ -43,9 +49,13 @@ regform.addEventListener('submit', function(event) {
 })
     .then((res) => {
         res.json().then((data) => {
-            console.log(data),
             document.getElementById("messaging").innerHTML = "",
-            makeElement(data.message, 'messaging', 'div')
+            makeElement(data.message, 'messaging', 'div', res.status)
+
+            if (res.status == 201){
+                window.location.href = 'Sign-In.html';
+            }
+
 
                 })
             });
