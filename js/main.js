@@ -112,4 +112,5 @@ window.onload = () =>{
 	this.hideMenu()
 	this.openModal()
 	this.closeModal()
+	openQuestion()
 }

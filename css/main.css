@@ -5,7 +5,7 @@ body {
   font-size: 16px;
 }
 
-input, textarea, select, button {
+input, textarea, select, button, .special-link{
     text-rendering: auto;
     color: initial;
     letter-spacing: normal;
@@ -28,6 +28,10 @@ input, textarea, select, button {
           font-family: 'Varela Round', sans-serif !important;
 
   }
+
+.special-link{
+  text-align: center;
+}
 
 input[type="text"], input[type="password"], input[type="email"]
 {
@@ -275,6 +279,12 @@ input[type="text"], input[type="password"], input[type="email"]
   overflow-x: hidden;
 }
 
+.no-questions{
+  font-weight: 700;
+  color: #721c24;
+  font-size: 2em;
+}
+
 .q-pic{
 	width: 20%;
 	display: block;
@@ -315,7 +325,7 @@ nav {
 
 }
 
-.main-box{
+.main-box, .fake-form{
 	display: block;
 	width: 100%;
   margin: 0 auto;
@@ -326,6 +336,7 @@ nav {
   margin: 0 auto;
   margin-top: 20%;
   padding-bottom: 10%;
+  overflow: auto;
 }
 .menubody {
     display: block;
@@ -771,7 +782,7 @@ hr {
   display: block;
 }
 
-.main-box{
+.main-box, .fake-form{
   width:80%;
 }
 
@@ -827,7 +838,7 @@ hr {
   display: block;
 }
 
-.main-box{
+.main-box, .fake-form{
   width:50%;
 }
 

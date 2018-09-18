@@ -5,8 +5,9 @@ window.onload = () =>{
 	getQuestions()
 }
 
-const makeElement = (id, name, title, description, answers, parentId,  elementType) => {
-    elem = document.createElement(elementType);
+const makeElement = (id, name, title, description, answers, parentId,  elementType, message, status) => {
+    elem = document.createElement(elementType)
+    if (status == 200){
     elem.innerHTML = `<div class="q-box">
 
 					<p class="q-name fs-12">Asked by ${name}</p>
@@ -19,36 +20,49 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
 
 					
 					<div class="specs">
-						<div class="spec-answ themecolor-text"><i class="fas fa-pencil-alt"></i>${answers } answers</div>
+						<div class="spec-answ themecolor-text"><i class="fas fa-pencil-alt"></i>${answers} answers</div>
 					</div>
 
-					<button class="view themecolor-bg  view txt-wht pointer">View</button>
+					<button class="view themecolor-bg txt-wht pointer" onClick="viewQuestion(${id})"  id="question${id}" value="${id}">View</button>
 				
 				 </div>`
+        } else {
+          elem.innerHTML = `<div class="q-box no-questions">${message}</div>`
+        }
 
     elem.setAttribute('data-id' , id);
     parentElem = document.getElementById(parentId)
-    console.log(parent) 
-    parentElem.append(elem);
+    parentElem.append(elem)
 }
-
 
 const getQuestions = () => {
     console.log("Fetching questions ...")
     fetch(`${baseUrl}/questions` , {
         method: "GET",
+          headers:{
+    "Access-Control-Allow-Origin": "*"
+  },
     })
     .then((res) => {
         res.json().then((data) => {
-            console.log(data)
+          if (res.status == 200){
 				for (let i in data.list) {
-					makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'root', 'div')
-
+					makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'root', 'div', data.message, res.status)
 				}
+      } else {
+          makeElement(null, null, null, null, null, 'root', 'div', data.message, res.status)
+      }
 			});
         });
     }
 
+//send data-id
+const viewQuestion = (id) => {
+  console.log("This is the id: " + id)
+  localStorage.setItem('questionid', id);
+  window.location.href = 'viewQuestion.html';
+}
+//end of send data-id
 
 
 var overlay = document.getElementById('overlay');
@@ -136,7 +150,7 @@ close_button.classList.add('hide');
 var questionform = document.getElementById('question-form');
 
 
-function makeQueResponse(message, parentId, elementType, status){
+const makeQueResponse = (message, parentId, elementType, status) => {
     elem = document.createElement(elementType);
 
     if (status == 201){
@@ -178,14 +192,22 @@ questionform.addEventListener('submit', function(event) {
     .then((res) => {
         res.json().then((data) => {
             document.getElementById("que-resp").innerHTML = "",
-            makeQueResponse(data.message, 'que-resp', 'div', res.status)
+            makeQueResponse(data.message, 'que-resp', 'div', res.status),
+            setTimeout(hideDialog, 5000)
 
             if (res.status == 201){
-                console.log("Question Posted")
-            }
+            document.getElementById("root").innerHTML = "",
+
+            getQuestions()
+          }
+
 
 
                 })
             });
         });
+}
+
+const hideDialog = () => {
+      document.getElementById("que-resp").innerHTML = ""
 }
