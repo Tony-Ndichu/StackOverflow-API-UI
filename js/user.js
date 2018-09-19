@@ -75,7 +75,7 @@ const getMostAnswered = () =>{
           makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'user-most-answered', 'div', data.message, res.status)
         }
       } else {
-          makeElement(null, null, null, null, null, 'user-recent', 'div', data.message, res.status)
+          makeElement(null, null, null, null, null, 'user-most-answered', 'div', data.message, res.status)
       }
       });
         });
