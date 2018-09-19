@@ -114,7 +114,7 @@ window.onload = () =>{
 	this.hideMenu()
 	this.openModal()
 	this.closeModal()
-	if (window.location.pathname == "/frontend/StackOverflow-API-UI/UserProfile.html"){
+	if (window.location.pathname == "/UserProfile.html"){
 	profilePage()
 }
 	openQuestion()
