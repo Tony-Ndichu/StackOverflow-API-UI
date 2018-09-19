@@ -1,1 +1,1 @@
-baseUrl = 'https://finalstack.herokuapp.com';
+baseUrl = 'https://finalstack.herokuapp.com/api/v1';
