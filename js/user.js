@@ -1,23 +1,40 @@
-var token = localStorage.getItem('thetoken');
+
+const profilePage = () => {
+    getUserRecent();
+    getProfile();
+    getMostAnswered()
+}
 
 
-const makeElement = (first_name, last_name, username, email, questions, answers, parentId,  elementType) => {
+const makeElement = (id, name, title, description, answers, parentId,  elementType, message, status) => {
     elem = document.createElement(elementType)
+    if (status == 200){
+    elem.innerHTML = `<div class="q-box">
 
-    elem.innerHTML = `<p class="prof-label">Full name</p> <p class="prof-deet">${first_name} ${last_name}</p>
-          <p class="prof-label">Username</p> <p class="prof-deet">${username}</p>
-          <p class="prof-label">Email</p> <p class="prof-deet">${email}</p>
-          <p class="prof-label">Questions asked</p> <p class="prof-deet">${questions} questions</p>
-          <p class="prof-label">Answers given</p> <p class="prof-deet">${answers} answers</p>`
+          <p class="q-name fs-12">Asked by You</p>
+          
+          <p class="q-que fs-20 fw-800 ">${title}</p>
 
+          <p class="q-que-xtr fs-14">${description}</p>
+
+          <div class="specs">
+            <div class="spec-answ themecolor-text"><i class="fas fa-pencil-alt"></i> ${answers} answers</div>
+          </div>
+
+        </div>`
+        } else {
+          elem.innerHTML = `<div class="q-box no-questions">${message}</div>`
+        }
+
+    elem.setAttribute('data-id' , id);
     parentElem = document.getElementById(parentId)
     parentElem.append(elem)
 }
 
 
-const getProfile = () => {
-    console.log("Fetching user_profile ...")
-    fetch(`${baseUrl}/auth/profile` , {
+const getUserRecent = () =>{
+    console.log("Fetching user's most recent questions ...")
+    fetch(`${baseUrl}/auth/questions` , {
         method: "GET",
           headers:{
     "Access-Control-Allow-Origin": "*",
@@ -27,16 +44,41 @@ const getProfile = () => {
     })
     .then((res) => {
         res.json().then((data) => {
-
-				for (let i in data.list) {
-					makeElement(data.list[i]['first_name'],data.list[i]['last_name'], data.list[i]['username'], data.list[i]['email'], data.list[i]['no_of_questions'], data.list[i]['no_of_answers'], 'profile', 'div')
-				}
-
-			});
+          if (res.status == 200){
+        for (let i in data.list) {
+          makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'user-recent', 'div', data.message, res.status)
+        }
+      } else {
+          makeElement(null, null, null, null, null, 'user-recent', 'div', data.message, res.status)
+      }
+      });
         });
-    }
-
-
-const getUserRecent = () =>{
-  
 }
+
+
+
+
+const getMostAnswered = () =>{
+    console.log("Fetching user's most answered questions ...")
+    fetch(`${baseUrl}/auth/questions/most_answered` , {
+        method: "GET",
+          headers:{
+    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer '+ token
+  },
+    })
+    .then((res) => {
+        res.json().then((data) => {
+          if (res.status == 200){
+        for (let i in data.list) {
+          makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'user-most-answered', 'div', data.message, res.status)
+        }
+      } else {
+          makeElement(null, null, null, null, null, 'user-recent', 'div', data.message, res.status)
+      }
+      });
+        });
+}
+
+

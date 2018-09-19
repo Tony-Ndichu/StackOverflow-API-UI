@@ -108,10 +108,15 @@ if (typeof(element) != 'undefined' && element != null)
 
 //TO ENSURE THESE JS FILES ONLY RUN WHEN DOM ELEMENTS HAVE LOADED
 window.onload = () =>{
+		console.log(window.location.pathname)
+
 	this.showMenu()
 	this.hideMenu()
 	this.openModal()
 	this.closeModal()
+	if (window.location.pathname == "/frontend/StackOverflow-API-UI/UserProfile.html"){
+	profilePage()
+}
 	openQuestion()
-	getProfile()
+
 }
