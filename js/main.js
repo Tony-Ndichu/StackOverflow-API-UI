@@ -113,4 +113,5 @@ window.onload = () =>{
 	this.openModal()
 	this.closeModal()
 	openQuestion()
+	getProfile()
 }
