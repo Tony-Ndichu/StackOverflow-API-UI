@@ -60,7 +60,7 @@ const getQuestions = () => {
 const viewQuestion = (id) => {
   console.log("This is the id: " + id)
   localStorage.setItem('questionid', id);
-  window.location.href = 'viewQuestion.html';
+  window.location.href = 'ViewQuestion.html';
 }
 //end of send data-id
 

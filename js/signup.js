@@ -61,3 +61,15 @@ regform.addEventListener('submit', function(event) {
             });
         });
 }
+
+let toLogin = document.getElementById('redirect-to-login');
+
+
+toLogin.onclick = () => {
+    redirect('Sign-In.html')
+}
+
+
+const redirect = (pagename) => {
+    window.location.href = `${pagename}`
+}

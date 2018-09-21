@@ -54,3 +54,11 @@ loginform.addEventListener('submit', function(event) {
 }
 
 //END OF USER LOGIN
+
+
+let toRegister = document.getElementById('redirect-to-register');
+
+
+toRegister.onclick = () => {
+    redirect('Sign-Up.html')
+}

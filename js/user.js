@@ -19,6 +19,7 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
 
           <div class="specs">
             <div class="spec-answ themecolor-text"><i class="fas fa-pencil-alt"></i> ${answers} answers</div>
+            <button onClick="deleteQuestion(${id})" >Delete</div>
           </div>
 
         </div>`
@@ -78,6 +79,22 @@ const getMostAnswered = () =>{
           makeElement(null, null, null, null, null, 'user-most-answered', 'div', data.message, res.status)
       }
       });
+        });
+}
+
+
+const deleteQuestion = (id) =>{
+    console.log("Deleting question ...")
+    fetch(`${baseUrl}/questions/${id}` , {
+        method: "DELETE",
+          headers:{
+    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer '+ token
+  },
+    })
+    .then((res) => {
+       console.log("Deleted")
         });
 }
 

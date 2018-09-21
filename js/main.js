@@ -6,7 +6,7 @@ let theMenuButton = document.getElementById('menu');
 let theCloseButton = document.getElementById('closer');
 
 
-function showMenu() {
+const showMenu = () =>{
 	theMenuButton.onclick = function () {
 	toggleMenuBody()
 	toggleCloseButton()
@@ -15,7 +15,7 @@ function showMenu() {
 }
 }
 
-function hideMenu() {
+const hideMenu = () =>{
 	theCloseButton.onclick = function () {
 	toggleMenuBody()
 	toggleCloseButton()
@@ -24,7 +24,7 @@ function hideMenu() {
 }
 }
 
-function toggleMenuBody(){ 
+const toggleMenuBody = () =>{ 
 
 	var menuid = document.getElementById("bodyMenu")
 
@@ -40,7 +40,7 @@ menuid.classList.add('not-visible');
 }
 
 
-function toggleMenuButton(){
+const toggleMenuButton = () =>{
 	
 	var menu_button = document.getElementById("menu")
 
@@ -56,7 +56,7 @@ menu_button.classList.add('hide');
 }
 
 
-function toggleCloseButton(){
+const toggleCloseButton = () =>{
 	
 	var close_button = document.getElementById("closer")
 
@@ -80,25 +80,25 @@ let modalCloser = document.getElementById('close-modal')
 
 
 
-function openModal(){
+const openModal = () =>{
 //CHECK FIRST IF MODAL EXISTS IN PAGE
 	var element =  document.getElementById('open-modal');
 if (typeof(element) != 'undefined' && element != null)
 {
-	modalOpener.onclick = function () {
+	modalOpener.onclick = () =>{
          overlay.classList.remove("is-hidden");
      }
  }
 }
 
 
-function closeModal(){
+const closeModal = () =>{
 
 //CHECK FIRST IF MODAL EXISTS IN PAGE
 	var element =  document.getElementById('close-modal');
 if (typeof(element) != 'undefined' && element != null)
 {
-	modalCloser.onclick = function () {
+	modalCloser.onclick = () =>{
 
    overlay.classList.add("is-hidden");
 }
@@ -110,13 +110,15 @@ if (typeof(element) != 'undefined' && element != null)
 window.onload = () =>{
 		console.log(window.location.pathname)
 
-	this.showMenu()
-	this.hideMenu()
-	this.openModal()
-	this.closeModal()
+	showMenu()
+	hideMenu()
+	openModal()
+	closeModal()
 	if (window.location.pathname == "/UserProfile.html"){
 	profilePage()
 }
-	openQuestion()
 
+	if (window.location.pathname == "/ViewQuestion.html"){
+	openQuestion()
+}
 }
