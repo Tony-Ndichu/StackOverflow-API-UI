@@ -77,7 +77,27 @@
 </div>
 
 
+		<div class="overlay is-hidden" id="overlay">
 
+		  <div class="modal-content">
+
+		  	<div id="que-resp"></div>
+			<span class="button-close" id="close-answer" onclick={closeAnswer()} ></span>
+
+			<div class="q-box">
+			<div id="ans-edit"></div>
+			<h3>Edit Answer</h3>
+
+			<form id="edit-answer-form">
+			<textarea id="answer" class="add-que">Answer.....</textarea>
+			<button type="submit" class="themecolor-bg w-40 fl-r txt-wht pointer">Edit answer</button>
+			</form>
+
+			</div>
+
+		  </div>
+
+		</div>
 
 </body>
 <script type="text/javascript" src="js/ViewQuestion.js"></script>

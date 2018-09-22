@@ -41,9 +41,11 @@ loginform.addEventListener('submit', function(event) {
   })
      .then((res) => {
         res.json().then((data) => {
+
             document.getElementById("messaging").innerHTML = "",
             makeElement(data.message, 'messaging', 'div', res.status),
             localStorage.setItem('thetoken', data.access_token);
+            localStorage.setItem('user_id', data.user_id)
 
             if (res.status == 200){
                 window.location.href = 'home.html';

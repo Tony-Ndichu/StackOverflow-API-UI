@@ -52,6 +52,10 @@ input[type="text"], input[type="password"], input[type="email"]
 
 }
 
+.pointed{
+  cursor: pointer;
+}
+
 /* MARGIN */
 .m-l-10{margin-left: 10%;}
 .m-r-50{margin-right: 50%;}

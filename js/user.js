@@ -28,6 +28,8 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
         }
 
     elem.setAttribute('data-id' , id);
+    elem.setAttribute('id' , `div${id}`);
+
     parentElem = document.getElementById(parentId)
     parentElem.append(elem)
 }
@@ -94,7 +96,8 @@ const deleteQuestion = (id) =>{
   },
     })
     .then((res) => {
-       console.log("Deleted")
+       var to_delete = document.getElementById(`div${id}`);
+       to_delete.parentNode.removeChild(to_delete);
         });
 }
 
