@@ -196,7 +196,14 @@ input[type="text"], input[type="password"], input[type="email"]
 
 }
 
+.del-button{
+    margin-left: 10px;
+    cursor: pointer;
+}
 
+.pointed{
+  cursor: pointer;
+}
 
 .themecolor-bg{
 	background-color:  #40a0e0;
