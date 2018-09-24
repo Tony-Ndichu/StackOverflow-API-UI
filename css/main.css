@@ -659,12 +659,23 @@ hr {
     
 }
 
-.specs{
+.votes{
     display: flex;
+    flex-direction: row;
     float: right;
+    margin-right: 20px;
+    justify-content: space-between;
 }
 
+.votes p{
+  margin-top: 0;
+  font-weight:bold;
+  margin-left: 5px;
+}
 
+#open-answer{
+  margin: 0;
+}
 
 .thefooter{
   position: absolute;

@@ -6,6 +6,11 @@ var answer_to_edit = null;
 var user_who_posted_answer = null;
 var user_who_posted_question = null;
 var currently_accepted = null;
+var upvote_box = null;
+var downvote_box = null;
+var changed_upvote = false;
+var unique = null;
+
 
 const theQuestion = (id, name, title, description, parentId,  elementType) => {
     elem = document.createElement(elementType)
@@ -23,9 +28,10 @@ const theQuestion = (id, name, title, description, parentId,  elementType) => {
 }
 
 
-const theAnswers = (id, name, body, parentId,  elementType, user_id, accept_status) => {
+const theAnswers = (id, name, body, parentId,  elementType, user_id, accept_status, upvotes, downvotes , upvote_id, downvote_id, already_upvoted, already_downvoted) => {
+
     elem = document.createElement(elementType)
-    console.log(accept_status)
+    console.log(upvotes)
 
     part1 = `<div class="q-box">
 
@@ -52,9 +58,14 @@ if (user == user_who_posted_question){
 }else{
     part3 = ``
 }
+
+    part_4 = `<div class="votes"><p class="vote-type pointed" onClick="upVote(${id} , ${upvote_id}, ${upvotes}, ${already_upvoted})"><i class="far fa-thumbs-up fa-lg"></i></p> <p class="upvote-count" id="upvote${upvote_id}">${upvotes}</p><p class="vote-type" onClick="downVote(${id}, ${downvote_id} , ${downvotes}, ${already_downvoted})"> <i class="far fa-thumbs-down fa-lg"></i></p> <p class="downvote-count" id="downvote${downvote_id}">${downvotes}</p></div>`
     part1_end = `</div>`
 
-    elem.innerHTML = part1 + part2 + part3 + part1_end
+
+
+
+    elem.innerHTML = part1 + part2 + part3 + part_4 + part1_end
     elem.setAttribute('data-id' , id);
     parentElem = document.getElementById(parentId)
     parentElem.append(elem)
@@ -65,7 +76,9 @@ const openQuestion = () => {
     fetch(`${baseUrl}/questions/${que_id}` , {
         method: "GET",
           headers:{
-    "Access-Control-Allow-Origin": "*"
+    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer '+ token
   },
     })
     .then((res) => {
@@ -77,7 +90,9 @@ const openQuestion = () => {
                console.log(user_who_posted_question)
 
               for (let i in data.answers) {
-          theAnswers(data.answers[i]['answer_id'],data.answers[i]['user_name'], data.answers[i]['answer_body'], 'the-answers', 'div', data.answers[i]['user_id'], data.answers[i]['accepted'])
+          theAnswers(data.answers[i]['answer_id'],data.answers[i]['user_name'], data.answers[i]['answer_body'], 'the-answers', 'div', data.answers[i]['user_id'], data.answers[i]['accepted'], data.answers[i]['upvotes'], data.answers[i]['downvotes'], data.answers[i]['upvote_id'], data.answers[i]['downvote_id'], data.answers[i]['already_upvoted'], data.answers[i]['already_downvoted'])
+            upvote_box = data.answers[i]['upvote_id']
+            downvote_box = data.answers[i]['downvote_id']
             if (data.answers[i]['accepted'] == "true"){
               currently_accepted = data.answers[i]['answer_id']
               console.log("The previously_accepted answer has id: ", currently_accepted)
@@ -262,8 +277,9 @@ const accept = (answer_to_accept) =>{
           old_div_id = `accept${currently_accepted}`
           new_div_id = `accept${answer_to_accept}`
 
+          if (currently_accepted != null){
           document.getElementById(old_div_id).innerHTML = `Accept`
-
+}
           document.getElementById(new_div_id).innerHTML = `<i class="fas fa-check-circle fa-2x"></i>`
 
           currently_accepted = answer_to_accept
@@ -271,3 +287,114 @@ const accept = (answer_to_accept) =>{
   }
 
 //THIS IS THE END OF "ACCEPT AN ANSWER"
+
+
+
+//UPVOTE AN ANSWER
+
+
+const upVote = (answer_to_upvote, the_box_id, upvotes, already_upvoted) =>{
+
+    fetch(`${baseUrl}/answers/${answer_to_upvote}/upvote`, {
+
+  method: 'POST', // or 'PUT'
+  headers:{
+    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer '+ token
+  }
+})
+    .then((res) => {
+          div_id = `upvote${the_box_id}`
+          the_div = document.getElementById(div_id)
+
+          if (already_upvoted == 0){
+
+             if (the_div.classList.contains("changed")){
+              the_div.innerHTML = parseInt(the_div.innerHTML) - 1
+                  the_div.classList.remove("changed")
+
+            } else{
+              the_div.innerHTML = parseInt(the_div.innerHTML) + 1
+                  the_div.classList.add("changed")
+
+            }
+                
+        } else{
+
+            
+            if (the_div.classList.contains("changed")){
+
+                  the_div.innerHTML = parseInt(the_div.innerHTML) + 1
+                  the_div.classList.remove("changed")
+
+            } else{
+
+                  the_div.innerHTML = parseInt(the_div.innerHTML) - 1
+                  the_div.classList.add("changed")
+
+
+            }
+            
+            
+          }
+        
+});
+}
+
+//THIS IS THE END OF "UPVOTE AN ANSWER"
+
+
+//UPVOTE AN ANSWER
+
+
+const downVote = (answer_to_downvote, the_box_id, downvotes, already_downvoted) =>{
+
+    fetch(`${baseUrl}/answers/${answer_to_downvote}/downvote`, {
+
+  method: 'POST', // or 'PUT'
+  headers:{
+    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer '+ token
+  }
+})
+    .then((res) => {
+          div_id = `downvote${the_box_id}`
+          the_div = document.getElementById(div_id)
+
+          if (already_downvoted == 0){
+
+             if (the_div.classList.contains("changed")){
+              the_div.innerHTML = parseInt(the_div.innerHTML) - 1
+                  the_div.classList.remove("changed")
+
+            } else{
+              the_div.innerHTML = parseInt(the_div.innerHTML) + 1
+                  the_div.classList.add("changed")
+
+            }
+                
+        } else{
+
+            
+            if (the_div.classList.contains("changed")){
+
+                  the_div.innerHTML = parseInt(the_div.innerHTML) + 1
+                  the_div.classList.remove("changed")
+
+            } else{
+
+                  the_div.innerHTML = parseInt(the_div.innerHTML) - 1
+                  the_div.classList.add("changed")
+
+
+            }
+            
+            
+          }
+        
+});
+}
+
+//THIS IS THE END OF "UPVOTE AN ANSWER"
