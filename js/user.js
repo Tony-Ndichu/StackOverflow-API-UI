@@ -19,7 +19,7 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
 
           <div class="specs">
             <div class="spec-answ answ themecolor-text"><i class="fas fa-pencil-alt"></i> ${answers} answers</div>
-            <div class="themecolor-text del-button " onClick="deleteQuestion(${id})" ><i class="fas fa-trash-alt fa-lg"></i></div>
+            <div class="themecolor-text del-button " onClick="deleteQuestion(${id})" >Delete<i class="fas fa-trash-alt fa-lg"></i></div>
 
           </div>
           <div class="time">${time}</div>
@@ -56,7 +56,7 @@ const getUserRecent = () =>{
           makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'user-recent', 'div', data.message, res.status, data.list[i]['time'])
         }
       } else {
-          makeElement(null, null, null, null, null, 'user-recent', 'div', data.message, res.status, data.list[i]['time'])
+          makeElement(null, null, null, null, null, 'user-recent', 'div', data.message, res.status)
       }
       });
         });
@@ -82,7 +82,7 @@ const getMostAnswered = () =>{
           makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'user-most-answered', 'div', data.message, res.status, data.list[i]['time'])
         }
       } else {
-          makeElement(null, null, null, null, null, 'user-most-answered', 'div', data.message, res.status, data.list[i]['time'])
+          makeElement(null, null, null, null, null, 'user-most-answered', 'div', data.message, res.status)
       }
       });
         });
@@ -101,10 +101,19 @@ const deleteQuestion = (id) =>{
     })
     .then((res) => {
        var to_delete = document.getElementById(`div${id}`);
-       to_delete.parentNode.removeChild(to_delete);
+       removeFadeOut(to_delete, 2000);
         });
 }
 
+const removeFadeOut = (element, speed) =>{
+  var seconds = speed/1000;
+  element.style.transition = "opacity " + seconds + "s ease";
+  element.style.opacity = 0;
+  setTimeout(() => {
+    element.parentNode.removeChild(element);
+
+  }, speed)
+}
 
 //send data-id
 const viewQuestion = (id) => {

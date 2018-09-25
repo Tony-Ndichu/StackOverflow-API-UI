@@ -51,7 +51,7 @@ const getQuestions = () => {
 					makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'root', 'div', data.message, res.status, data.list[i]['time'])
 				}
       } else {
-          makeElement(null, null, null, null, null, 'root', 'div', data.message, res.status, data.list[i]['time'])
+          makeElement(null, null, null, null, null, 'root', 'div', data.message, res.status)
       }
 			});
         });
