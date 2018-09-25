@@ -118,7 +118,7 @@ window.onload = () =>{
 	profilePage()
 }
 
-	if (window.location.pathname == "/ViewQuestion.html"){
+	if (window.location.pathname == "ViewQuestion.html"){
 	openQuestion()
 }
 }

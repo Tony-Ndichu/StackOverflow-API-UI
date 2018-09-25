@@ -28,7 +28,7 @@ const theQuestion = (id, name, title, description, parentId,  elementType) => {
 }
 
 
-const theAnswers = (id, name, body, parentId,  elementType, user_id, accept_status, upvotes, downvotes , upvote_id, downvote_id, already_upvoted, already_downvoted) => {
+const theAnswers = (id, name, body, parentId,  elementType, user_id, accept_status, upvotes, downvotes , upvote_id, downvote_id, already_upvoted, already_downvoted, time) => {
 
     elem = document.createElement(elementType)
     console.log(upvotes)
@@ -54,18 +54,19 @@ if (user == user_who_posted_question){
 }
 
     if (user_id == user){
-    part3 = `<p class="q-time fs-12 fw-200 ta-r p-r-1 pointed" id="open-answer" onClick="openAnswer(${id} , ${user_id} , '${body}')">Edit</p>`
+    part3 = `<p class="q-edit fs-12 fw-200 themecolor-text ta-r p-r-1 pointed" id="open-answer" onClick="openAnswer(${id} , ${user_id} , '${body}')">Edit</p>`
 }else{
     part3 = ``
 }
 
     part_4 = `<div class="votes"><p class="vote-type pointed" onClick="upVote(${id} , ${upvote_id}, ${upvotes}, ${already_upvoted})"><i class="far fa-thumbs-up fa-lg"></i></p> <p class="upvote-count" id="upvote${upvote_id}">${upvotes}</p><p class="vote-type" onClick="downVote(${id}, ${downvote_id} , ${downvotes}, ${already_downvoted})"> <i class="far fa-thumbs-down fa-lg"></i></p> <p class="downvote-count" id="downvote${downvote_id}">${downvotes}</p></div>`
+    part_5 = `<div class="time">${time}</div>`
     part1_end = `</div>`
 
 
 
 
-    elem.innerHTML = part1 + part2 + part3 + part_4 + part1_end
+    elem.innerHTML = part1 + part2 + part3 + part_4 + part_5 + part1_end
     elem.setAttribute('data-id' , id);
     parentElem = document.getElementById(parentId)
     parentElem.append(elem)
@@ -90,7 +91,7 @@ const openQuestion = () => {
                console.log(user_who_posted_question)
 
               for (let i in data.answers) {
-          theAnswers(data.answers[i]['answer_id'],data.answers[i]['user_name'], data.answers[i]['answer_body'], 'the-answers', 'div', data.answers[i]['user_id'], data.answers[i]['accepted'], data.answers[i]['upvotes'], data.answers[i]['downvotes'], data.answers[i]['upvote_id'], data.answers[i]['downvote_id'], data.answers[i]['already_upvoted'], data.answers[i]['already_downvoted'])
+          theAnswers(data.answers[i]['answer_id'],data.answers[i]['user_name'], data.answers[i]['answer_body'], 'the-answers', 'div', data.answers[i]['user_id'], data.answers[i]['accepted'], data.answers[i]['upvotes'], data.answers[i]['downvotes'], data.answers[i]['upvote_id'], data.answers[i]['downvote_id'], data.answers[i]['already_upvoted'], data.answers[i]['already_downvoted'], data.answers[i]['time'])
             upvote_box = data.answers[i]['upvote_id']
             downvote_box = data.answers[i]['downvote_id']
             if (data.answers[i]['accepted'] == "true"){

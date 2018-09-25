@@ -643,6 +643,27 @@ hr {
     cursor: pointer;
 }
 
+.time{
+  display: block;
+  float:right;
+  color:grey;
+  font-size: 14px;
+  clear: right;
+  margin-top: 5px;
+}
+
+.q-edit{
+  display: block;
+  float:right;
+  font-size: 14px;
+  clear: right;
+}
+
+.answ{
+  display: block;
+  float:right;
+  clear: right;
+}
 .not-selected{
    color: #40a0e0 ;
    cursor: pointer;
@@ -662,7 +683,8 @@ hr {
 .votes{
     display: flex;
     flex-direction: row;
-    float: right;
+    float: left;
+    clear: left;
     margin-right: 20px;
     justify-content: space-between;
 }

@@ -20,7 +20,7 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
 
 					
 					<div class="specs">
-						<div class="spec-answ themecolor-text"><i class="fas fa-pencil-alt"></i>${answers} answers</div>
+						<div class="spec-answ answ themecolor-text"><i class="fas fa-pencil-alt"></i>${answers} answers</div>
 					</div>
 
 					<button class="view themecolor-bg txt-wht pointer" onClick="viewQuestion(${id})"  id="question${id}" value="${id}">View</button>

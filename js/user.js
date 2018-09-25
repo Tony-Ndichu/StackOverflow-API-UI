@@ -6,7 +6,7 @@ const profilePage = () => {
 }
 
 
-const makeElement = (id, name, title, description, answers, parentId,  elementType, message, status) => {
+const makeElement = (id, name, title, description, answers, parentId,  elementType, message, status, time) => {
     elem = document.createElement(elementType)
     if (status == 200){
     elem.innerHTML = `<div class="q-box">
@@ -18,11 +18,13 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
           <p class="q-que-xtr fs-14">${description}</p>
 
           <div class="specs">
-            <div class="spec-answ themecolor-text"><i class="fas fa-pencil-alt"></i> ${answers} answers</div>
+            <div class="spec-answ answ themecolor-text"><i class="fas fa-pencil-alt"></i> ${answers} answers</div>
             <div class="themecolor-text del-button " onClick="deleteQuestion(${id})" ><i class="fas fa-trash-alt fa-lg"></i></div>
 
           </div>
+          <div class="time">${time}</div>
 
+<button class="view themecolor-bg txt-wht pointer" onClick="viewQuestion(${id})"  id="question${id}" value="${id}">View</button>
 
         </div>`
         } else {
@@ -51,10 +53,10 @@ const getUserRecent = () =>{
         res.json().then((data) => {
           if (res.status == 200){
         for (let i in data.list) {
-          makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'user-recent', 'div', data.message, res.status)
+          makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'user-recent', 'div', data.message, res.status, data.list[i]['time'])
         }
       } else {
-          makeElement(null, null, null, null, null, 'user-recent', 'div', data.message, res.status)
+          makeElement(null, null, null, null, null, 'user-recent', 'div', data.message, res.status, data.list[i]['time'])
       }
       });
         });
@@ -77,10 +79,10 @@ const getMostAnswered = () =>{
         res.json().then((data) => {
           if (res.status == 200){
         for (let i in data.list) {
-          makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'user-most-answered', 'div', data.message, res.status)
+          makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'user-most-answered', 'div', data.message, res.status, data.list[i]['time'])
         }
       } else {
-          makeElement(null, null, null, null, null, 'user-most-answered', 'div', data.message, res.status)
+          makeElement(null, null, null, null, null, 'user-most-answered', 'div', data.message, res.status, data.list[i]['time'])
       }
       });
         });
@@ -104,3 +106,10 @@ const deleteQuestion = (id) =>{
 }
 
 
+//send data-id
+const viewQuestion = (id) => {
+  console.log("This is the id: " + id)
+  localStorage.setItem('questionid', id);
+  window.location.href = 'ViewQuestion.html';
+}
+//end of send data-id
