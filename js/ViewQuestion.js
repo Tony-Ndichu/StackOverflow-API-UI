@@ -13,6 +13,7 @@ var unique = null;
 
 
 const theQuestion = (id, name, title, description, parentId,  elementType) => {
+  console.log("Writing question")
     elem = document.createElement(elementType)
     console.log("This is the question id: " ,id )
     elem.innerHTML = `<p class="q-name fs-12">Asked by ${name}</p>
@@ -29,7 +30,7 @@ const theQuestion = (id, name, title, description, parentId,  elementType) => {
 
 
 const theAnswers = (id, name, body, parentId,  elementType, user_id, accept_status, upvotes, downvotes , upvote_id, downvote_id, already_upvoted, already_downvoted, time) => {
-
+      console.log("Writing answers")
     elem = document.createElement(elementType)
     console.log(upvotes)
 
