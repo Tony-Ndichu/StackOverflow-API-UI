@@ -18,8 +18,9 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
           <p class="q-que-xtr fs-14">${description}</p>
 
           <div class="specs">
+          <div class="themecolor-text del-button " onClick="deleteQuestion(${id})" ><i class="fas fa-trash-alt fa-lg"></i></div>
             <div class="spec-answ answ themecolor-text"><i class="fas fa-pencil-alt"></i> ${answers} answers</div>
-            <div class="themecolor-text del-button " onClick="deleteQuestion(${id})" ><i class="fas fa-trash-alt fa-lg"></i></div>
+            
 
           </div>
           <div class="time">${time}</div>
