@@ -5,7 +5,7 @@ window.onload = () =>{
 	getQuestions()
 }
 
-const makeElement = (id, name, title, description, answers, parentId,  elementType, message, status) => {
+const makeElement = (id, name, title, description, answers, parentId,  elementType, message, status, time) => {
     elem = document.createElement(elementType)
     if (status == 200){
     elem.innerHTML = `<div class="q-box">
@@ -23,6 +23,7 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
 						<div class="spec-answ answ themecolor-text"><i class="fas fa-pencil-alt"></i>${answers} answers</div>
 					</div>
 
+          <div class="time">${time}</div>
 					<button class="view themecolor-bg txt-wht pointer" onClick="viewQuestion(${id})"  id="question${id}" value="${id}">View</button>
 				
 				 </div>`
@@ -47,10 +48,10 @@ const getQuestions = () => {
         res.json().then((data) => {
           if (res.status == 200){
 				for (let i in data.list) {
-					makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'root', 'div', data.message, res.status)
+					makeElement(data.list[i]['question_id'],data.list[i]['user_name'], data.list[i]['title'], data.list[i]['description'], data.list[i]['no_of_answers'], 'root', 'div', data.message, res.status, data.list[i]['time'])
 				}
       } else {
-          makeElement(null, null, null, null, null, 'root', 'div', data.message, res.status)
+          makeElement(null, null, null, null, null, 'root', 'div', data.message, res.status, data.list[i]['time'])
       }
 			});
         });
