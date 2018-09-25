@@ -197,8 +197,10 @@ input[type="text"], input[type="password"], input[type="email"]
 }
 
 .del-button{
-    margin-left: 10px;
     cursor: pointer;
+    display: block;
+    float:right;
+    clear:right;
 }
 
 .pointed{
