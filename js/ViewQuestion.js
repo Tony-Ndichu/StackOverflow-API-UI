@@ -55,7 +55,7 @@ if (user == user_who_posted_question){
 }
 
     if (user_id == user){
-    part3 = `<p class="q-edit fs-12 fw-200 themecolor-text ta-r p-r-1 pointed" id="open-answer" onClick="openAnswer(${id} , ${user_id} , '${body}')">Edit</p>`
+    part3 = `<p class="q-edit fs-12 fw-200 themecolor-text ta-r p-r-1 pointed" id="open-answer" onClick="openAnswer(${id} , ${user_id} , '${body}')"> <i class="fas fa-edit"></i>&nbspEdit</p>`
 }else{
     part3 = ``
 }
@@ -69,6 +69,7 @@ if (user == user_who_posted_question){
 
     elem.innerHTML = part1 + part2 + part3 + part_4 + part_5 + part1_end
     elem.setAttribute('data-id' , id);
+    elem.setAttribute('class' , 'theme-box');
     parentElem = document.getElementById(parentId)
     parentElem.append(elem)
 }

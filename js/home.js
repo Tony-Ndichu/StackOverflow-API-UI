@@ -32,6 +32,7 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
         }
 
     elem.setAttribute('data-id' , id);
+    elem.setAttribute('class' , 'theme-box');
     parentElem = document.getElementById(parentId)
     parentElem.append(elem)
 }

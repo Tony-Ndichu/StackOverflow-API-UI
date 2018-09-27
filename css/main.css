@@ -240,7 +240,12 @@ input[type="text"], input[type="password"], input[type="email"]
 	align-items: flex-start;
 	margin-top: 20%;
 	min-height: 100vh;
+}
 
+.theme-box{
+      box-shadow: 0 0.3125rem 1rem 0 rgba(0,0,0,0.24);
+    background-color: white;
+    border-radius: 10px;
 }
 
 .auth-page-leftside{
@@ -339,10 +344,19 @@ nav {
 
 }
 
+.spec-border{
+         border: 1px solid #e8e8e8;
+         border-radius: 10px;
+}
 .main-box, .fake-form{
 	display: block;
 	width: 100%;
   margin: 0 auto;
+}
+
+.fake-form{
+    border: 1px solid #e8e8e8;
+  border-radius:10px;
 }
 
 .whole{
@@ -492,8 +506,8 @@ nav {
 
 .ans-box{
   display: block;
-  float:right;
-  width:90%;
+  margin:0 auto;
+  width:80%;
 }
 
 .que-box{
@@ -569,6 +583,7 @@ nav {
   width:95%;
   padding-top: 2%;
   background-color: white;
+      border: 1px solid #e8e8e8;
 }
 
 .profile-image{
