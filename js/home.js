@@ -20,7 +20,7 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
 
 					
 					<div class="specs">
-						<div class="spec-answ answ themecolor-text"><i class="fas fa-pencil-alt"></i>${answers} answers</div>
+						<div class="spec-answ answ themecolor-text"><i class="fas fa-comments"></i>&nbsp</i>${answers} answers</div>
 					</div>
 
           <div class="time">${time}</div>

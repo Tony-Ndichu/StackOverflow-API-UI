@@ -114,11 +114,11 @@ window.onload = () =>{
 	hideMenu()
 	openModal()
 	closeModal()
-	if (window.location.pathname == "/UserProfile.html"){
+	if (window.location.pathname == "/frontend/StackOverflow-API-UI/UserProfile.html"){
 	profilePage()
 }
 
-	if (window.location.pathname == "/ViewQuestion.html"){
+	if (window.location.pathname == "/frontend/StackOverflow-API-UI/ViewQuestion.html"){
 	openQuestion()
 }
 }
