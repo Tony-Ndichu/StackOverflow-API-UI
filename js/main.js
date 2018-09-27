@@ -105,10 +105,18 @@ if (typeof(element) != 'undefined' && element != null)
 }
 }
 
+var user_name = localStorage.getItem('user_name');
+
+const showName = () => {
+	let header_name = document.getElementById('username-header');
+
+	header_name.innerHTML = `${user_name}`
+}
 
 //TO ENSURE THESE JS FILES ONLY RUN WHEN DOM ELEMENTS HAVE LOADED
 window.onload = () =>{
 		console.log(window.location.pathname)
+		showName()
 
 	showMenu()
 	hideMenu()

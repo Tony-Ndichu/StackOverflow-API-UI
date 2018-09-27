@@ -27,12 +27,14 @@ const makeElement = (id, name, title, description, answers, parentId,  elementTy
 
 <button class="view themecolor-bg txt-wht pointer" onClick="viewQuestion(${id})"  id="question${id}" value="${id}">View</button>
 
-        </div>`
+        </div>
+        <hr >`
         } else {
           elem.innerHTML = `<div class="q-box no-questions">${message}</div>`
         }
 
     elem.setAttribute('data-id' , id);
+
     elem.setAttribute('id' , `div${id}`);
 
     parentElem = document.getElementById(parentId)

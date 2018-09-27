@@ -586,6 +586,14 @@ nav {
       border: 1px solid #e8e8e8;
 }
 
+.head-icon{
+  display: block;
+  float:left;
+}
+.head-name{
+  display: block;
+  float:left;
+}
 .profile-image{
   display: block;
   margin: 0 auto;

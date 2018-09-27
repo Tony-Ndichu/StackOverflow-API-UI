@@ -46,6 +46,7 @@ loginform.addEventListener('submit', function(event) {
             makeElement(data.message, 'messaging', 'div', res.status),
             localStorage.setItem('thetoken', data.access_token);
             localStorage.setItem('user_id', data.user_id)
+            localStorage.setItem('user_name' , data.user_name)
 
             if (res.status == 200){
                 window.location.href = 'home.html';

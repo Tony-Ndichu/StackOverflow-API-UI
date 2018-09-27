@@ -1,7 +1,15 @@
 var token = localStorage.getItem('thetoken');
 
+var user_name = localStorage.getItem('user_name');
+
+const showName = () => {
+  let header_name = document.getElementById('username-header');
+
+  header_name.innerHTML = `${user_name}`
+}
 
 window.onload = () =>{
+  showName()
 	getQuestions()
 }
 
