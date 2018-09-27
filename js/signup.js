@@ -1,7 +1,7 @@
 //START OF USER REGISTRATION
 
 var regform = document.getElementById('registration-form');
-baseUrl = 'https://finalstack.herokuapp.com/api/v1';
+baseUrl = 'http://127.0.0.1:5000/api/v1';
 
 
 function makeElement(message, parentId, elementType, status){
