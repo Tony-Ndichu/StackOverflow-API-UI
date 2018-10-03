@@ -191,6 +191,7 @@ let answerCloser = document.getElementById('close-answer')
 
 
 const openAnswer = (id, user_id, body) =>{
+  
     answer_to_edit = id
     user_who_posted_answer = user_id
     console.log("Answer to edit is:", answer_to_edit)
