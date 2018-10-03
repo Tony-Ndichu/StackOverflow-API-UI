@@ -164,6 +164,7 @@ answerform.addEventListener('submit', function(event) {
             document.getElementById("the-answers").innerHTML = "",
 
             openQuestion()
+            
           }
 
 
@@ -249,6 +250,8 @@ editanswerform.addEventListener('submit', function(event) {
             document.getElementById("the-answers").innerHTML = "",
 
             openQuestion()
+            overlayAns.classList.add("is-hidden");
+
           }
 
 
