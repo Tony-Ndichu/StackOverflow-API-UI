@@ -157,7 +157,7 @@ answerform.addEventListener('submit', function(event) {
         res.json().then((data) => {
             document.getElementById("ans-resp").innerHTML = "",
             makeAnsResponse(data.message, 'ans-resp', 'div', res.status),
-            setTimeout(hideDialog, 5000)
+            setTimeout(hideDialog, 2000)
 
             if (res.status == 201){
             document.getElementById("the-question").innerHTML = "",
@@ -244,7 +244,7 @@ editanswerform.addEventListener('submit', function(event) {
         res.json().then((data) => {
             document.getElementById("ans-edit").innerHTML = "",
             makeAnsResponse(data.message, 'ans-edit', 'div', res.status),
-            setTimeout(hideDialog, 5000)
+            setTimeout(hideDialog, 2000)
 
             if (res.status == 200 || res.status == 201){
             document.getElementById("the-question").innerHTML = "",

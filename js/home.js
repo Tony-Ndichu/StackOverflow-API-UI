@@ -209,6 +209,8 @@ questionform.addEventListener('submit', function(event) {
             document.getElementById("root").innerHTML = "",
 
             getQuestions()
+            overlay.classList.add("is-hidden");
+
           }
 
 
