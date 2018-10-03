@@ -409,7 +409,7 @@ nav {
 
 .not-visible{
   animation-name: liftup;
-  animation-duration: 0.5s;
+  animation-duration: 0s;
   animation-fill-mode: forwards;
 }
 
