@@ -16,7 +16,7 @@
 * **[FONTAWESOME 5.3.1](https://fontawesome.com/)**
 
 ## Link to heroku:
-* https://tony-stackoverflow.herokuapp.com/UserProfile.html
+* https://tony-stackoverflow.herokuapp.com
 
 ## Credits
 * **[Andela Kenya](https://andela.com/)**
