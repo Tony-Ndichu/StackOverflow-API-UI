@@ -207,7 +207,6 @@ questionform.addEventListener('submit', function(event) {
 
             if (res.status == 201){
             document.getElementById("root").innerHTML = "",
-
             getQuestions()
             overlay.classList.add("is-hidden");
 
