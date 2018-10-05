@@ -14,7 +14,6 @@ const makeProfile = (first_name, last_name, username, email, questions, answers,
 }
 
 const getProfile = () => {
-    console.log("Fetching user_profile ...")
     fetch(`${baseUrl}/auth/profile` , {
         method: "GET",
           headers:{
