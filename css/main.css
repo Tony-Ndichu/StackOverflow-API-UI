@@ -167,7 +167,7 @@ input[type="text"], input[type="password"], input[type="email"]
 @keyframes dropdown{
   from {
     transform: translateY(-100%);
-  }waw
+  }
 
   to {
     transform: translateY(0);
@@ -772,7 +772,7 @@ hr {
 
 .search-input{
   border-style: solid;
-  border-color:blue
+  border-color:blue;
   padding-left: 30px;
 }
 

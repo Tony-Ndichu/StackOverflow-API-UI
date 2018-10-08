@@ -1,7 +1,5 @@
-
 <!DOCTYPE html>
-<html>
-	
+<html>	
 	<head>
 		<title>Sign-In</title>
 		<meta charset="utf-8">
@@ -18,98 +16,68 @@
 
 	<body>
 		<div class="auth-page container">
-
 			<nav>
 					<div class="inner-nav" id="menu">
 						<div id="menu" class="menu-button fl-l cl-n">
 							<i class="fas fa-lg fa-bars"></i>
 						</div>
-
 						<h3 id="menu-word" class="f-w-800 fl-l">LOGIN</h3>
 					</div>
-
-					<h3 class="upper m-l-10">StackOverflow-Lite </h3>
-				
-				
+					<h3 class="upper m-l-10">StackOverflow-Lite </h3>			
 			</nav>
-
 				  <div id="closer" class="close hide">
 				  	&#xd7;
-				  </div>
+				  </div>  
 
-  
-
-      <div class="menubody not-visible" id="bodyMenu" >
-		<ul>
-          <li class="menu-item" onclick={redirect('home.html')}><a>Home</a></li>
-          <li class="menu-item" onclick={redirect('UserProfile.html')} ><a>Account</a></li>
-          <li class="menu-item" onClick={logout()}><a>Logout</a></li>
-        </ul>
-      </div>
-
+			<div class="menubody not-visible" id="bodyMenu" >
+				<ul>
+					<li class="menu-item" onclick="{redirect('home.html')}"><a>Home</a></li>
+					<li class="menu-item" onclick="{redirect('UserProfile.html')}" ><a>Account</a></li>
+					<li class="menu-item" onClick={logout()}><a>Logout</a></li>
+				</ul>
+			</div>
 			<div class="auth-page-centerbox">
-
 				<div class="auth-page-leftside softborder">
-
-					<div class="auth-page-banner">
-										
+					<div class="auth-page-banner"></div>
+				</div>
+				<div class="auth-page-rightside">
+					<h1 class="themecolor-text centered">StackOverflow-Lite</h1>
+					<div class="auth-page-phrase">
+						<p class="weight-one centered">Sign-In to get right into the conversations that matter to you!!</p>		
 					</div>
-
-			</div>
-
-
-			<div class="auth-page-rightside">
-
-						<h1 class="themecolor-text centered">StackOverflow-Lite</h1>
-
-						<div class="auth-page-phrase">
-							<p class="weight-one centered">Sign-In to get right into the conversations that matter to you!!</p>		
-						</div>
-
-						<div class="auth-page-signup">
-							<div id="messaging"></div>
-
-							<form class="auth-page-form" id="login-form">								
-								<input type="text" id="uname" name="username" placeholder="Username or email" />		
-								<input type="password" id="logpass" name="password" placeholder="Password" />
-
+					<div class="auth-page-signup">
+						<div id="messaging"></div>
+						<form class="auth-page-form" id="login-form">								
+							<input type="text" id="uname" name="username" placeholder="Username or email" />		
+							<input type="password" id="logpass" name="password" placeholder="Password" />
 							<button id="submit-login" type="submit" class="f-p-signup themecolor-bg txt-wht pointer">Log-In</button>
-
 						</form>
-						</div>
+					</div>
+					<div class="auth-page-login">
+						<p class="centered">Don't have an account?</p>
+						<button class="f-p-login themecolor-bg txt-wht pointer" id="redirect-to-register">Sign-Up</button>
+					</div>
+				</div>
 
-						<div class="auth-page-login">
-							<p class="centered">Don't have an account?</p>
-							<button class="f-p-login themecolor-bg txt-wht pointer" id="redirect-to-register">Sign-Up</button>
-						</div>
 			</div>
 
 		</div>
-
-	  </div>
-	  		<div class="dialog-box is-hidden" id="dialog">
-
-		  <div class="dialog-content">
-
-		<div class="innerdialog">
-		<div class="messagebody" id="message">
-	
+		  
+	  	<div class="dialog-box is-hidden" id="dialog">
+			<div class="dialog-content">
+				<div class="innerdialog">
+					<div class="messagebody" id="message"></div>
+					<button class="dialogbutton" id="gotit">Got it</button>
+				</div>
+			</div>
 		</div>
-
-		<button class="dialogbutton" id="gotit">Got it</button>
-
-		</div>
-	</div>
-</div>
 
 	</body>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.8.0/jasmine.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.8.0/jasmine.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.8.0/jasmine-html.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.8.0/boot.min.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
-<script type="text/javascript" src="js/loginSpec.js"></script>
-<script type="text/javascript" src="js/url.js"></script>
-
+	<script type="text/javascript" src="js/loginSpec.js"></script>
+	<script type="text/javascript" src="js/url.js"></script>
 </html>

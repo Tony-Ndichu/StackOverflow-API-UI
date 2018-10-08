@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html>
-
 	<head>
 		<title>View Question</title>
 		<meta charset="utf-8">
@@ -23,83 +21,61 @@
 					<div id="menu" class="menu-button fl-l cl-n">
 						<i class="fas fa-lg fa-bars"></i>
 					</div>
-
 					<h3 id="menu-word" class="f-w-800 fl-l">MENU</h3>
 				</div>
-
 				<h3 class="upper m-l-10">StackOverflow-Lite </h3>
-
 				<div class="search-box right-addon">
 							<i class="fas fa-user head-icon">&nbsp;</i><div id="username-header" class="head-name"></div>
-				</div>
-				
+				</div>				
 			</nav>
 
-				  <div id="closer" class="close hide">
-				  	&#xd7;
-				  </div>
-
-  
-
-			  <div class="menubody not-visible" id="bodyMenu" >
-		        <ul>
-		          <li class="menu-item" onclick="{redirect('home.html')}"><a>Home</a></li>
-		          <li class="menu-item" onclick="{redirect('UserProfile.html')}"><a>Account</a></li>
-		          <li class="menu-item" onClick="{logout()}"><a>Logout</a></li>
-		        </ul>
-			  </div>
-
-		  <div class="que-box">
-				<div class="q-box spec-border" id="the-question">
-					
-				 </div>
-
-				 <div class="comm-box">
-				 	<div id="ans-resp"></div>
-						 <form class="comment-box spec-border" id="answer-form">
-							<input type="text" id="answer-box" placeholder="Give an answer...." />
-							<button class="add-comm" type="submit">Answer</button>
-						 </form>
-					</div>
-
-
-		</div>
-				<div class="specs p-1 block">
-						<div class="spec-answ themecolor-text"><i class="fas fa-comments"></i>&nbsp<span id="no-of-answers"> _</span> answers so far</div> 
-				</div>
-
-				 <hr />
-
-
-
-				 <div class="ans-box" id="the-answers">	</div>
-</div>
-
-
-		<div class="overlay is-hidden" id="overlay">
-
-		  <div class="modal-content">
-
-		  	<div id="que-resp"></div>
-			<span class="button-close" id="close-answer" onclick={closeAnswer()} ></span>
-
-			<div class="q-box">
-			<div id="ans-edit"></div>
-			<h3>Edit Answer</h3>
-
-			<form id="edit-answer-form">
-			<textarea id="answer" class="add-que">Answer.....</textarea>
-			<button type="submit" class="themecolor-bg w-40 fl-r txt-wht pointer">Edit answer</button>
-			</form>
-
+			<div id="closer" class="close hide">
+				&#xd7;
 			</div>
 
-		  </div>
+			<div class="menubody not-visible" id="bodyMenu" >
+				<ul>
+					<li class="menu-item" onclick="{redirect('home.html')}"><a>Home</a></li>
+					<li class="menu-item" onclick="{redirect('UserProfile.html')}"><a>Account</a></li>
+					<li class="menu-item" onClick="{logout()}"><a>Logout</a></li>
+				</ul>
+			</div>
 
+		  	<div class="que-box">
+				<div class="q-box spec-border" id="the-question"></div>	
+				<div class="comm-box">
+				 	<div id="ans-resp"></div>
+					<form class="comment-box spec-border" id="answer-form">
+						<input type="text" id="answer-box" placeholder="Give an answer...." />
+						<button class="add-comm" type="submit">Answer</button>
+					</form>
+				</div>
+			</div>
+
+			<div class="specs p-1 block">
+				<div class="spec-answ themecolor-text"><i class="fas fa-comments"></i>&nbsp<span id="no-of-answers"> _</span> answers so far</div> 
+			</div>
+			<hr/>
+			<div class="ans-box" id="the-answers"></div>
 		</div>
 
-</body>
-<script type="text/javascript" src="js/ViewQuestion.js"></script>
-<script type="text/javascript" src="js/url.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+		<div class="overlay is-hidden" id="overlay">
+			<div class="modal-content">
+				<div id="que-resp"></div>
+				<span class="button-close" id="close-answer" onclick="{closeAnswer()}"></span>
+				<div class="q-box">
+					<div id="ans-edit"></div>
+					<h3>Edit Answer</h3>
+					<form id="edit-answer-form">
+						<textarea id="answer" class="add-que">Answer.....</textarea>
+						<button type="submit" class="themecolor-bg w-40 fl-r txt-wht pointer">Edit answer</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="js/ViewQuestion.js"></script>
+	<script type="text/javascript" src="js/url.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </html>

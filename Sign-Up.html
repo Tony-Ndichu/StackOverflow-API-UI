@@ -19,97 +19,66 @@
 	<body>
 		<div class="auth-page container">
 			<nav>
-					<div class="inner-nav" id="menu">
-						<div id="menu" class="menu-button fl-l cl-n">
-							<i class="fas fa-lg fa-bars"></i>
-						</div>
-
-						<h3 id="menu-word" class="f-w-800 fl-l">REGISTER</h3>
+				<div class="inner-nav" id="menu">
+					<div id="menu" class="menu-button fl-l cl-n">
+						<i class="fas fa-lg fa-bars"></i>
 					</div>
-
-					<h3 class="upper m-l-10">StackOverflow-Lite </h3>
-					
-								
+					<h3 id="menu-word" class="f-w-800 fl-l">REGISTER</h3>
+				</div>
+				<h3 class="upper m-l-10">StackOverflow-Lite </h3>						
 			</nav>
 
-				  <div id="closer" class="close hide">
-				  	&#xd7;
-				  </div>
+			<div id="closer" class="close hide">
+			&#xd7;
+			</div>  
 
-  
+			<div class="menubody not-visible" id="bodyMenu" >
+				<ul>
+					<li class="menu-item" ><a href="home.html">Home</a></li>
+					<li class="menu-item" ><a href="UserProfile.html">Account</a></li>
+					<li class="menu-item" ><a href="ViewQuestion.html">Logout</a></li>
+				</ul>
+			</div>
 
-      <div class="menubody not-visible" id="bodyMenu" >
-        <ul>
-          <li class="menu-item" ><a href="home.html">Home</a></li>
-          <li class="menu-item" ><a href="UserProfile.html">Account</a></li>
-          <li class="menu-item" ><a href="ViewQuestion.html">Logout</a></li>
-
-        </ul>
-      </div>
-
-				<div class="auth-page-centerbox">
-
-					<div class="auth-page-leftside softborder">
-
-						<div class="auth-page-banner b-2">
-											
-						</div>
-
+			<div class="auth-page-centerbox">
+				<div class="auth-page-leftside softborder">
+					<div class="auth-page-banner b-2"></div>						
+				</div>
+				<div class="auth-page-rightside">
+					<div id="messaging"></div>
+					<h1 class="themecolor-text centered">StackOverflow-Lite</h1>
+					<div class="auth-page-phrase">
+						<p class="weight-one centered">Sign-Up to ask questions and get the answers you need.</p>
+						<p class="weight-two centered">Get the conversation going !!</p>
 					</div>
-
-					<div class="auth-page-rightside">
-						<div id="messaging"></div>
-
-						<h1 class="themecolor-text centered">StackOverflow-Lite</h1>
-
-						<div class="auth-page-phrase">
-							<p class="weight-one centered">Sign-Up to ask questions and get the answers you need.</p>
-							<p class="weight-two centered">Get the conversation going !!</p>
-						</div>
-
-						<div class="auth-page-signup">
-
-							<form class="auth-page-form" id="registration-form">
-								<input type="text" id="fname" name="firstname" placeholder="First Name e.g John" />
-								<input type="text" id="lname" name="lastname" placeholder="Last Name e.g Doe" />
-								<input type="text" id="uname" name="username" placeholder="Username" />
-								<input type="email" id="regmail" name="email" placeholder="Email e.g. foo@gmail.com" />			
-								<input type="password" id="regpass" name="password" placeholder="Password" />
-							
-
+					<div class="auth-page-signup">
+						<form class="auth-page-form" id="registration-form">
+							<input type="text" id="fname" name="firstname" placeholder="First Name e.g John" />
+							<input type="text" id="lname" name="lastname" placeholder="Last Name e.g Doe" />
+							<input type="text" id="uname" name="username" placeholder="Username" />
+							<input type="email" id="regmail" name="email" placeholder="Email e.g. foo@gmail.com" />			
+							<input type="password" id="regpass" name="password" placeholder="Password" />
 							<button class="f-p-signup themecolor-bg txt-wht pointer" type="submit" id="submit-registration">Sign-Up</button>
 						</form>
-
-						</div>
-
-						<div class="auth-page-login">
-							<p class="centered">Already have an account?</p>
-							<button class="f-p-login themecolor-bg txt-wht pointer" id="redirect-to-login">Log In</button>
-						</div>
-
+					</div>
+					<div class="auth-page-login">
+						<p class="centered">Already have an account?</p>
+						<button class="f-p-login themecolor-bg txt-wht pointer" id="redirect-to-login">Log In</button>
 					</div>
 				</div>
-
+			</div>
 		</div> 
 
 		<div class="dialog-box is-hidden" id="dialog">
-
-		  <div class="dialog-content">
-
-		<div class="innerdialog">
-		<div class="messagebody" id="message">
-	
+			<div class="dialog-content">
+				<div class="innerdialog">
+					<div class="messagebody" id="message"></div>
+					<button class="dialogbutton" id="gotit">Got it</button>
+				</div>
+			</div>
 		</div>
-
-		<button class="dialogbutton" id="gotit">Got it</button>
-
-		</div>
-	</div>
-</div>
-
-
-
+		
 	</body>
-<script type="text/javascript" src="js/signup.js"></script>
-<script type="text/javascript" src="js/url.js"></script>
+	<script type="text/javascript" src="js/signup.js"></script>
+	<script type="text/javascript" src="js/url.js"></script>
 </html>
