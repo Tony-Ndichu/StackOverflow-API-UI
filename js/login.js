@@ -1,6 +1,9 @@
 // START OF USER LOGIN
 const baseUrl = 'https://finalstack.herokuapp.com/api/v1';
+window.baseUrl  = baseUrl
+
 const loginform = document.getElementById('login-form');
+window.loginform  = loginform
 
 const makeElement = (message, parentId, elementType, status) => {
   elem = document.createElement(elementType);
@@ -61,3 +64,5 @@ const toRegister = document.getElementById('redirect-to-register');
 toRegister.onclick = () => {
   redirect('Sign-Up.html');
 };
+
+window.toRegister = toRegister 
