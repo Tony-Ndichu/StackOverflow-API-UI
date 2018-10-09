@@ -1,0 +1,40 @@
+{
+  "name": "stackoverflow-api-ui",
+  "version": "1.0.0",
+  "description": "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/) # StackOverFlow-Lite.",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=text mocha",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "testURL": "http://localhost"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tony-Ndichu/StackOverflow-API-UI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tony-Ndichu/StackOverflow-API-UI/issues"
+  },
+  "homepage": "https://github.com/Tony-Ndichu/StackOverflow-API-UI#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "i": "^0.3.6",
+    "isomorphic-fetch": "^2.2.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.2.0",
+    "mocha-jsdom": "^2.0.0",
+    "npm": "^6.4.1",
+    "nyc": "^13.0.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1"
+  }
+}

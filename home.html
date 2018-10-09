@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Recently Added Questions</title>
+		<meta charset="utf-8">
+		<meta name="description" content="The only platform you need to get the answers to your questions.">
+		<meta name="keywords" content="questions, answers">
+		<link rel="icon" type="image/png" href="images/logo.png" >
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+		<link rel="stylesheet" href="css/alerts.css" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	</head>
+
+	<body>
+		<div class="whole bg-color">
+			<nav>
+				<div class="inner-nav" id="menu">
+					<div id="menu" class="menu-button fl-l cl-n">
+						<i class="fas fa-lg fa-bars"></i>
+					</div>
+					<h3 id="menu-word" class="f-w-800 fl-l">MENU</h3>
+				</div>
+				<h3 class="upper m-l-10">StackOverflow-Lite </h3>					
+				<div class="search-box right-addon">
+					<i class="fas fa-user head-icon">&nbsp;</i><div id="username-header" class="head-name"></div>
+				</div>
+			</nav>
+
+			<div id="closer" class="close hide">
+			&#xd7;
+			</div>
+			<div class="menubody not-visible" id="bodyMenu" >
+				<ul>
+					<li class="menu-item" onclick="{redirect('home.html')}"><a>Home</a></li>
+					<li class="menu-item" onclick="{redirect('UserProfile.html')}" ><a>Account</a></li>
+					<li class="menu-item" onClick={logout()}><a>Logout</a></li>
+				</ul>
+			</div>
+
+      		<h2 class="title themecolor-text">Recently Asked Questions</h2>
+			<div class="q-box fake-form">
+				<textarea id="open-modal" class="" type="" placeholder="Post a Question" ></textarea>
+			</div>
+			<div class="main-box" id="root"></div>			
+
+		</div>
+
+		<div class="overlay is-hidden" id="overlay">
+		  	<div class="modal-content">
+				<div id="que-resp"></div>
+				<span class="button-close" id="close-modal"></span>
+				<div class="q-box">
+					<h3>Post a Question</h3>
+					<form id="question-form">
+						<input type="text" placeholder="Title" id="title">
+						<textarea id="descr" class="add-que">Description......make your question as descriptive as possible</textarea>
+						<button type="submit" class="themecolor-bg w-40 fl-r txt-wht pointer">Post question</button>
+					</form>
+				</div>
+		  	</div>
+		</div>		
+
+	</body>
+	 <script type="text/javascript" src="js/home.js"></script>
+	 <script type="text/javascript" src="js/url.js"></script> 	
+</html>

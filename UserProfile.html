@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>User Profile</title>
+		<meta charset="utf-8">
+		<meta name="description" content="The only platform you need to get the answers to your questions.">
+		<meta name="keywords" content="questions, answers">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+		<link rel="icon" type="image/png" href="images/logo.png" >
+	</head>
+
+	<body class="bg-color">
+		<div class="whole">
+			<nav>
+				<div class="inner-nav" id="menu">
+					<div id="menu" class="menu-button fl-l cl-n">
+						<i class="fas fa-lg fa-bars"></i>
+					</div>
+					<h3 id="menu-word" class="f-w-800 fl-l">MENU</h3>
+				</div>
+				<h3 class="upper m-l-10">StackOverflow-Lite </h3>				
+				<div class="search-box right-addon">
+					<i class="fas fa-user head-icon">&nbsp;</i><div id="username-header" class="head-name"></div>
+				</div>				
+			</nav>
+
+			<div id="closer" class="close hide">
+				&#xd7;
+			</div>  
+
+			<div class="menubody not-visible" id="bodyMenu" >
+				<ul>
+					<li class="menu-item" onclick="redirect('home.html')"><a>Home</a></li>
+					<li class="menu-item" onclick="redirect('UserProfile.html')"><a>Account</a></li>
+					<li class="menu-item" onClick={logout()}><a>Logout</a></li>
+				</ul>
+			</div>
+
+      		<h2 class="title themecolor-text">Profile</h2>
+
+			<div class="profile-box">
+				<hr />
+				<div class="profile-details" id="profile"></div>
+			</div>
+
+
+      	  	<div class="toggleable">		  
+				<div class="tog-nav">
+					<div class="tog-nav-item selected fw-800" id="tab-one-button" >Recent</div>
+					<p class="tog-nav-item not-selected fw-800" id="tab-two-button">Most Answers</p>
+				</div>
+
+      			<!- TAB ONE CONTENT ->
+				<div class="tog-pane show-this" id="tab-one-content">
+					<h1 class="fw-900 txt-grey">Most recent questions By You</h1>
+					<hr>
+					<div id="user-recent"></div>			
+      			</div>
+      			<!- END OF TAG ONE CONTENT ->
+
+      			<!- TAB TWO CONTENT ->
+           		<div class="tog-pane hide-this" id="tab-two-content">
+					<h1 class="fw-900 txt-grey">Questions you asked with most answers</h1>
+					<hr>
+	      			<div id="user-most-answered"></div>
+      			</div>
+      			<!- END OF TAB TWO CONTENT ->
+
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="js/url.js"></script>
+	<script type="text/javascript" src="js/user.js"></script>
+	<script type="text/javascript" src="js/tab.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</html>
